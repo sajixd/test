@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            /* Dark background color */
+            color: #fff;
+            /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        #todo-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            /* Darker container background */
+            box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.1);
+            /* Lighter box shadow */
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: #fff;
+            /* Light text color */
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+            /* Darker border color */
+        }
+
+        th {
+            background-color: #333;
+            /* Darker header background */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666;
+            /* Darker border color */
+            border-radius: 3px;
+            background-color: #1e1e1e;
+            /* Darker input background */
+            color: #fff;
+            /* Light text color */
+        }
+
+        button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-button,
+        .Edit-button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .Edit-button {
+            background-color: #20e75c;
+            color: #fff;
+        }
+
+        .Edit-button:hover {
+            background-color: #1abb4c;
+        }
+
+        .search-button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+
+        .search-button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="todo-container">
+        <div id="search-container">
+            <a href="search" class="search-button">Search</a>
+        </div>
+        <form method="post" action="save">
+            <table>
+                <tr>
+                    <th colspan="3">Student details</th>
+                    <th>
+
+                    </th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="roll" id="roll" placeholder="Roll" required></td>
+                    <td><input type="text" name="sname" id="sname" placeholder="Name" required></td>
+                    <td><input type="text" name="marks" id="marks" placeholder="Marks" required></td>
+                    <td><button>Add</button></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>SlNo</td>
+                    <td>Roll</td>
+                    <td>St-name</td>
+                    <td>Marks</td>
+                    <td colspan="2">Action</td>
+                </tr>
+                <% var i=1; data.forEach((e)=>{
+                    %>
+                    <tr>
+                        <td>
+                            <%=i++%>
+                        </td>
+                        <td>
+                            <%=e.roll%>
+                        </td>
+                        <td>
+                            <%=e.sname%>
+                        </td>
+                        <td>
+                            <%=e.marks%>
+                        </td>
+                        <td>
+                            <a href="del?id=<%=e._id%>" class="delete-button">Delete</a>
+                        </td>
+                        <td>
+                            <a href="edit?id=<%=e._id%>" class="Edit-button">Edit</a>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+
+            </table>
+        </form>
+    </div>
+</body>
+
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #todo-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #2f2f2f;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 3px;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="searchByRoll" method="post">
+        <div id="todo-container">
+                <div id="search-container">
+                    <input type="text" id="search-input" placeholder="Search" name="search">
+                    <button id="search-button">Search</button>
+                </div>
+        </div>
+    </form>
+    <table>
+        <tr>
+            <td>SlNo</td>
+            <td>Roll</td>
+            <td>St-name</td>
+            <td>Marks</td>
+            <td colspan="2">Action</td>
+        </tr>
+        <% var i=1; data.forEach((e)=>{
+            %>
+            <tr>
+                <td>
+                    <%=i++%>
+                </td>
+                <td>
+                    <%=e.roll%>
+                </td>
+                <td>
+                    <%=e.sname%>
+                </td>
+                <td>
+                    <%=e.marks%>
+                </td>
+                <td>
+                    <a href="del?id=<%=e._id%>" class="delete-button">Delete</a>
+                </td>
+                <td>
+                    <a href="edit?id=<%=e._id%>" class="Edit-button">Edit</a>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+</html>
